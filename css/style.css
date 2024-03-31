@@ -1,0 +1,82 @@
+/* Bootstrap : https://getbootstrap.com/ */
+@import url(./bootstrap/bootstrap.css);
+/* Animation : https://theme-next.js.org/animate/ */
+@import url(./animate.css);
+/* SweetAlert: https://sweetalert2.github.io/*/
+@import url(./sweetalert/sweetalert2.min.css);
+/* fonts */
+@import url(./fonts.css);
+
+/* VAR ----------
+-----------------*/
+:root {
+  --var-color-primary: blue;
+  --var-color-secundary: red;
+  --var-color-text-light: white;
+
+  --b-m: 2px solid red;
+}
+
+/* FORMAT BOOTSTRAP */
+
+/* NAV ----------------
+-----------------------*/
+.navbar {
+  padding: 10px 20px;
+}
+.navbar-card {
+}
+.navbar-card i {
+  position: relative;
+  font-size: 30px;
+}
+.navbar-card-number {
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  background-color: var(--var-color-primary);
+  color: var(--var-color-text-light);
+  font-size: 9px;
+  --m: 20px;
+  height: var(--m);
+  width: var(--m);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  font-weight: bold;
+}
+
+.productos,
+.productos-lista {
+  padding: 36px;
+  /* border: var(--b-m); */
+}
+.productos-seleccionar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.card-invited {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.card-invited .card-invited-img {
+  --m: 100px;
+  width: var(--m);
+  max-width: var(--m);
+  height: var(--m);
+  border-radius: 1000px;
+  overflow: hidden;
+  margin-right: 16px;
+}
+.product-reset {
+  display: none;
+}
+.product-reset-visible {
+  display: inline-block;
+}
