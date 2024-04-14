@@ -1,9 +1,9 @@
 /* Bootstrap : https://getbootstrap.com/ */
-@import url(./bootstrap/bootstrap.css);
+@import url(./plugings/bootstrap/bootstrap.css);
 /* Animation : https://theme-next.js.org/animate/ */
-@import url(./animate.css);
+@import url(./plugings/animate.css);
 /* SweetAlert: https://sweetalert2.github.io/*/
-@import url(./sweetalert/sweetalert2.min.css);
+@import url(./plugings/sweetalert/sweetalert2.min.css);
 /* fonts */
 @import url(./fonts.css);
 
@@ -13,12 +13,15 @@
   --var-color-primary: blue;
   --var-color-secundary: red;
   --var-color-text-light: white;
-
   --b-m: 2px solid red;
 }
 
 /* FORMAT BOOTSTRAP */
-
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 2;
+}
 /* NAV ----------------
 -----------------------*/
 .navbar {
