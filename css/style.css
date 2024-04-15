@@ -11,14 +11,18 @@
 /* Components */
 @import url(./components/JSCard.css);
 
-
-
-
 /* FORMAT BOOTSTRAP */
 .card-body {
   display: flex;
   flex-direction: column;
   flex: 1 2;
+}
+
+body {
+  background-image: url(../image/background.jpg);
+  background-size: contain;
+  backdrop-filter: blur(18px);
+  background-attachment: fixed;
 }
 /* NAV ----------------
 -----------------------*/
