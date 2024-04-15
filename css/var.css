@@ -1,0 +1,19 @@
+/* VAR ----------
+-----------------*/
+:root {
+    
+    /* COLORS */
+    --var-color-primary: blue;
+    --var-color-secundary: red;
+    --var-color-text-light: white;
+    
+    
+    --b-m: 2px solid red;
+  
+    /* FONTS */
+  
+
+    /* COMPONENT*/
+    --comp-gap: 16px;
+    
+  }

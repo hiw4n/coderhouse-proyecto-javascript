@@ -5,16 +5,14 @@
 /* SweetAlert: https://sweetalert2.github.io/*/
 @import url(./plugings/sweetalert/sweetalert2.min.css);
 /* fonts */
+@import url(./var.css);
+/* fonts */
 @import url(./fonts.css);
+/* Components */
+@import url(./components/JSCard.css);
 
-/* VAR ----------
------------------*/
-:root {
-  --var-color-primary: blue;
-  --var-color-secundary: red;
-  --var-color-text-light: white;
-  --b-m: 2px solid red;
-}
+
+
 
 /* FORMAT BOOTSTRAP */
 .card-body {
