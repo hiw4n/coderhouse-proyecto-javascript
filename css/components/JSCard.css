@@ -6,25 +6,34 @@
   --h-general: 450px;
   --aspectRatio-general: calc(var(--h-g) / var(--v-g));
 
-  --JSCard-width: calc(100% / 2);
+  --JSCard-width: calc(100% / 3);
+  --gap: 20px;
+
+  --transition-general: all 0.5s ease-out;
 }
 
 /* CODE */
-#JScard {
+#JSCard {
+  padding: 32px;
 }
 
-#JScard-elements {
+#JSCard-elements {
+  display: flex;
+  gap: var(--gap);
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .JSCard_content {
-  border: var(--b-m);
+  /*  border: var(--b-m); */
   /* width: max-content; */
-  width: var(--JSCard-width);
+  width: calc(var(--JSCard-width) - var(--gap));
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: var(--comp-gap);
   position: relative;
+  overflow: hidden;
 }
 .JSCard_content,
 .JSCard_content-image,
@@ -70,11 +79,16 @@
   width: 100%;
   aspect-ratio: 1;
   padding: 5%;
-
   position: absolute;
-  bottom: 0;
+  bottom: -300px;
   left: 0;
   z-index: 6;
+  transition: var(--transition-general);
+}
+.JSCard_content:hover .JSCard_content-info {
+  transition: var(--transition-general);
+  bottom: 10px;
+  left: 0;
 }
 .JSCard_content-info-inner {
   background-color: rgba(255, 255, 255, 0.7);
@@ -87,6 +101,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .JSCard_content-button {
   display: flex;
   flex-direction: column;

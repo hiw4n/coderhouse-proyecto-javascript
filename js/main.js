@@ -1,4 +1,5 @@
 import productsJSON from '../data/products.js';
+
 import { Message } from './connect/message.js';
 import { HtmlCard } from './html/HtmlCard.js';
 import { HtmlCardMini } from './html/HtmlCardMini.js';
@@ -19,14 +20,24 @@ for (const [key, value] of BDLocal) {
     BD = [];
   }
 }
-console.log('BD: ', BD);
+/* console.log('BD: ', BD); */
 
 /* CLASS */
 const message = new Message();
-/* const htmlCard = new HtmlCard(json); */
+const htmlCard = new HtmlCard();
 const localStg = new LocalStorageCall();
 
-console.log('hola');
+/* console.log('hola'); */
+
+/* CREATE CARD */
+/* htmlCard.html(productsJSON); */
+function createCard(data, idName) {
+  let drawCard = document.getElementById(idName);
+  data.forEach((e) => {
+    drawCard.innerHTML += htmlCard.html(e);
+  });
+}
+createCard(productsJSON, 'JSCard-elements');
 
 /* console.log('.entries(lcSg) ', Object.entries(lcSg)); */
 
@@ -54,4 +65,3 @@ console.log('localStorage real', localStorage); */
 console.log('All', All);
 
 localStg.deleteAllBy('miGato'); */
-/* htmlCard.html(); */
