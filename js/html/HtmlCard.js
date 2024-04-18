@@ -5,18 +5,7 @@ export class HtmlCard {
   }
 
   html(data) {
-    const { name, id, description, img, avatar } = data;
-    /* let html = `
-    <div class="JSCard_content"> 
-      <ul>
-        <li>id: ${id}</li>
-        <li>name: ${name}</li>
-        <li>text: ${text}</li>
-        <li>img: ${img}</li>
-        <li>avatar: ${avatar}</li>
-      </ul>
-    </div>
-    `; */
+    const { name, id, description, img } = data;
     let html = `
       <div class="JSCard_content">
         <div class="JSCard_content-image" data-id="${id}">

@@ -25,12 +25,14 @@ for (const [key, value] of BDLocal) {
 /* CLASS */
 const message = new Message();
 const htmlCard = new HtmlCard();
+const htmlCardMini = new HtmlCardMini();
 const localStg = new LocalStorageCall();
 
 /* console.log('hola'); */
 
 /* CREATE CARD */
 /* htmlCard.html(productsJSON); */
+// JSCard
 function createCard(data, idName) {
   let drawCard = document.getElementById(idName);
   data.forEach((e) => {
@@ -38,6 +40,14 @@ function createCard(data, idName) {
   });
 }
 createCard(productsJSON, 'JSCard-elements');
+// JSCardMini
+function createCardMini(data, idName) {
+  let drawCard = document.getElementById(idName);
+  data.forEach((e) => {
+    drawCard.innerHTML += htmlCardMini.html(e);
+  });
+}
+createCardMini(productsJSON, 'JSCardMini-elements');
 
 /* console.log('.entries(lcSg) ', Object.entries(lcSg)); */
 

@@ -8,8 +8,11 @@
 @import url(./var.css);
 /* fonts */
 @import url(./fonts.css);
+/* Background */
+@import url(./components/background.css);
 /* Components */
 @import url(./components/JSCard.css);
+@import url(./components/JSCardMini.css);
 
 /* FORMAT BOOTSTRAP */
 .card-body {
@@ -21,9 +24,12 @@
 html,
 body {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
+  height: max-content;
+  min-height: 100% !important;
 }
 body {
+  position: relative;
   background-image: url(../image/background.jpg);
   background-size: 12%;
   backdrop-filter: blur(1px);
