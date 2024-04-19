@@ -1,11 +1,10 @@
 import productsJSON from '../data/products.js';
-import { Message } from './connect/message.js';
-import { LocalStorageCall } from './connect/Localstorage.js';
-/* COMPONENTS */
 
-import { HtmlCard } from './components/HtmlCard.js';
-import { HtmlCardMini } from './components/HtmlCardMini.js';
-import { HtmlSlider } from './components/HtmlSlider.js';
+import { Message } from './connect/message.js';
+import { HtmlCard } from './html/HtmlCard.js';
+import { HtmlCardMini } from './html/HtmlCardMini.js';
+import { HtmlSlider } from './html/HtmlSlider.js';
+import { LocalStorageCall } from './connect/Localstorage.js';
 /* localStorage.setItem('miGato', 'Pepe'); */
 
 /* VAR */
@@ -47,27 +46,10 @@ createCard(productsJSON, 'JSCard-elements');
 createCardMini(productsJSON, 'JSCardMini-elements'); */
 
 /* Add Product to cart */
-function createCardMini(data, idName) {
-  let drawCard = document.getElementById(idName);
-  drawCard.innerHTML += htmlCardMini.html(data);
-}
+function personAdd() {
+  /* console.log('id', id); */
+  console.log('hola');
 
-function personAdd(id) {
-  let data = productsJSON;
-  let person = {};
-  data.forEach((e) => {
-    if (e.id == id) {
-      person = e;
-    }
-  });
-  createCardMini(person, 'JSCardMini-elements');
+  /*   let value = localStgCall.getById(data, id);
+  drawCard.innerHTML += htmlCardMini.html(value); */
 }
-window.personAdd = personAdd; // because the fucntion of module is not call in external files.
-
-/* function obtener(data, id) {
-  console.log(
-    'localStgCall.getById(data, id);',
-    localStgCall.getById(data, id)
-  );
-  return localStgCall.getById(data, id);
-} */

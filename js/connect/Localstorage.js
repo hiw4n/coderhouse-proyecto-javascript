@@ -21,10 +21,16 @@ export class LocalStorageCall {
       message.error(err);
     }
   }
-  getBy(arr) {
-    /*    this.localStg.forEach((e) => {
-      console.log(e);
-    }); */
+  getById(data, id) {
+    try {
+      data.forEach((e) => {
+        if (e.id == id) {
+          return e;
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   deleteAllBy(element) {

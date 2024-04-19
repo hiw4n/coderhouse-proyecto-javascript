@@ -1,25 +1,26 @@
-/* * {
-  padding: 0;
-  margin: 0;
-} */
-.background-content {
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
+body {
+  background: linear-gradient(-45deg, #e73c7e, #a94fff, #23a6d5, #4f53ff);
+  background-size: 400% 400%;
+  animation: gradient 20s ease infinite;
   height: 100vh;
 }
-.background-content svg {
-  /* position: absolute;
-  top: 0;
-  left: 0; */
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  display: block;
-  background-color: #0e4166;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(14, 65, 102, 0.86),
-    #0e4166
-  );
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.ball {
+  z-index: -1;
+  position: fixed;
+  border-radius: 100%;
+  opacity: 0.9;
+  filter: blur(0.7px);
 }

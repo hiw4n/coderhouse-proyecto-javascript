@@ -30,10 +30,6 @@ body {
 }
 body {
   position: relative;
-  background-image: url(../image/background.jpg);
-  background-size: 12%;
-  backdrop-filter: blur(1px);
-  background-attachment: fixed;
 }
 
 /* NAV ----------------

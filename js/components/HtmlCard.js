@@ -26,13 +26,14 @@ export class HtmlCard {
             </div>
         </div>
         <div class="JSCard_content-button">
-            <a onclick="productAdd(${id})" href="#"
-                class="JSCard_content-button-invited btn btn-primary ">Invitar<i
-                    class="fa-solid fa-heart"></i>
-                <i class="fa-regular fa-heart"></i></a>
-
+          <button onclick="personAdd(${id})" class=" btn btn-primary  ">
+          Invitar
+            <i class="fa-solid fa-heart"></i>
+              <i class="fa-regular fa-heart"></i>
+          </button>
         </div>
       </div>
+      
     `;
 
     return html;
