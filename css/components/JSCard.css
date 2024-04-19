@@ -118,3 +118,28 @@
 }
 .JSCard_content-button-invited {
 }
+
+.JSCard_content-invited {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 6;
+  margin: auto;
+  padding: 20px;
+  opacity: 0;
+  top: -1000px;
+  left: 0;
+  width: 80%;
+  height: 80%;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.cardHidden {
+  pointer-events: none;
+}
+.cardHidden .JSCard_content-invited {
+  top: 0;
+  left: 0;
+  opacity: 1;
+}

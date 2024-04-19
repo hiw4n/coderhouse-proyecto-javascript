@@ -7,14 +7,14 @@ export class LocalStorageCall {
     this.connect = localStorage;
   }
 
-  getAll(arr) {
+  getAll(data) {
     try {
-      const value = this.connect.getItem(arr);
+      const value = this.connect.getItem(data);
       if (value) {
         return value;
       } else {
         throw new Error(
-          `💀 class LocalStorageCall.getAll, there isn't ('${element}')! 💀`
+          `💀 class LocalStorageCall.getAll, there isn't ('${data}')! 💀`
         );
       }
     } catch (err) {
@@ -25,6 +25,7 @@ export class LocalStorageCall {
     try {
       data.forEach((e) => {
         if (e.id == id) {
+          console.log('e', e);
           return e;
         }
       });

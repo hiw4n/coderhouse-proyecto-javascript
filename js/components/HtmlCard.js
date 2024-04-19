@@ -7,8 +7,8 @@ export class HtmlCard {
   html(data) {
     const { name, id, description, img } = data;
     let html = `
-      <div class="JSCard_content">
-        <div class="JSCard_content-image" data-id="${id}">
+      <div class="JSCard_content"  data-id="${id}" data-pepi="${id}">
+        <div class="JSCard_content-image">
             <img src="./image/${img}" alt="${name}" >
         </div>
         <div class="JSCard_content-info">
@@ -32,10 +32,16 @@ export class HtmlCard {
               <i class="fa-regular fa-heart"></i>
           </button>
         </div>
+        <div class="JSCard_content-invited">
+        <button onclick="deletedAdd(${id})" class=" btn btn-primary  ">
+          Borrar
+          <i class="fa-solid fa-heart"></i>
+          <i class="fa-regular fa-heart"></i>
+        </button>
+        </div>
       </div>
       
     `;
-
     return html;
   }
 }
