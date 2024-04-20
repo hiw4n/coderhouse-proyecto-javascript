@@ -70,7 +70,7 @@ function personAdd(id) {
   });
   createCardMini(person, 'JSCardMini-elements');
   personToLocalStorage(person);
-  personFindCard(2, '.JSCard_content');
+  personFindCard(id, '.JSCard_content');
 }
 window.personAdd = personAdd; // because the fucntion of module is not call in external files.
 
