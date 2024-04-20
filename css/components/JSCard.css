@@ -11,6 +11,12 @@
 
   --transition-general: all 0.5s ease-out;
 }
+* {
+  transition: var(--transition-general);
+}
+*:hover {
+  transition: var(--transition-general);
+}
 
 /* CODE */
 #JSCard {
@@ -82,7 +88,7 @@
   position: absolute;
   bottom: -300px;
   left: 0;
-  z-index: 6;
+  z-index: 4;
   transition: var(--transition-general);
 }
 .JSCard_content:hover .JSCard_content-info {
@@ -107,7 +113,7 @@
   flex-direction: column;
   justify-content: bottom;
   align-items: center;
-  z-index: 10;
+  z-index: 5;
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -128,18 +134,46 @@
   margin: auto;
   padding: 20px;
   opacity: 0;
-  top: -1000px;
+  top: 0px;
   left: 0;
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
   background-color: rgba(255, 255, 255, 0.9);
 }
 
 .cardHidden {
   pointer-events: none;
 }
+.cardHidden .JSCard_content-button,
+.cardHidden .JSCard_content-info {
+  display: none;
+}
+.cardHidden .JSCard_content-image {
+  filter: blur(7px);
+  transform: scale(0.9);
+}
+
 .cardHidden .JSCard_content-invited {
-  top: 0;
-  left: 0;
+  display: flex;
+  flex-direction: column;
+  transform: translate(-50%, -50%) scale(1);
   opacity: 1;
+}
+.JSCard_content-invited-image {
+  overflow: hidden;
+  --s: 100px;
+  width: var(--s);
+  height: var(--s);
+  border-radius: 10000px;
+}
+.JSCard_content-invited-image img {
+  width: 100%;
+  height: 100%;
+}
+.JSCard_content-invited button {
+  pointer-events: all;
 }
