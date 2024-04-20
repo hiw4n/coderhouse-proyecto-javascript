@@ -151,19 +151,19 @@
   border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
-.cardHidden {
+.JSCard_content.cardHidden {
   pointer-events: none;
 }
-.cardHidden .JSCard_content-button,
-.cardHidden .JSCard_content-info {
+.JSCard_content.cardHidden .JSCard_content-button,
+.JSCard_content.cardHidden .JSCard_content-info {
   display: none;
 }
-.cardHidden .JSCard_content-image {
+.JSCard_content.cardHidden .JSCard_content-image {
   filter: blur(7px);
   transform: scale(0.9);
 }
 
-.cardHidden .JSCard_content-invited {
+.JSCard_content.cardHidden .JSCard_content-invited {
   display: flex;
   flex-direction: column;
   transform: translate(-50%, -50%) scale(1);

@@ -1,4 +1,4 @@
-/* import productsJSON from '../data/productsOBJ.js'; */
+import productsJSON from '../data/productsOBJ.js';
 
 import { Message } from './connect/message.js';
 import { LocalStorageCall } from './connect/Localstorage.js';
@@ -31,45 +31,11 @@ const htmlCard = new HtmlCard();
 const htmlCardMini = new HtmlCardMini();
 const localStorageCall = new LocalStorageCall();
 
-/* API ------ STAR */
-const urlApi = '../data/products.json';
-/* localStorage.setItem('miGato', 'Pepe'); */
-
-async function fetchData(urlApi) {
-  try {
-    const response = await fetch(urlApi);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.log('error fetchData:', error);
-  }
-}
-
-const productsJSON = fetchData(urlApi).then((result) => {
-  return result;
-});
-
-console.log('productsJSON: ', productsJSON);
-
-/* productsJSON.forEach((element) => {
-  console.log(element);
-}); */
-
-console.log('productsJSON', typeof productsJSON);
-/* localStorage.forEach((element) => {
-  console.log(e);
-}); */
-
-/* API ------ STAR */
-
-console.log('productsJSON  type', typeof productsJSON);
-
 /* CARD */
 // Insert JSCard
-async function createCard(data, idName) {
+function createCard(data, idName) {
   let drawCard = document.getElementById(idName);
-  let dataJson = await data;
-  dataJson.forEach((e) => {
+  data.forEach((e) => {
     drawCard.innerHTML += htmlCard.html(e);
   });
 }
@@ -119,8 +85,8 @@ function personDeleted(id, idName) {
 }
 window.personDeleted = personDeleted; // because the fucntion of module is not call in external files.
 
-async function personAdd(id, idName) {
-  let data = await productsJSON;
+function personAdd(id, idName) {
+  let data = productsJSON;
   let person = {};
   data.forEach((e) => {
     if (e.id == id) {
