@@ -7,41 +7,29 @@ import { LocalStorageCall } from './connect/Localstorage.js';
 import { HtmlCard } from './components/HtmlCard.js';
 import { HtmlCardMini } from './components/HtmlCardMini.js';
 import { HtmlSlider } from './components/HtmlSlider.js';
+
 /* localStorage.setItem('miGato', 'Pepe'); */
-
-/* VAR */
-const BDLcStg = localStorage;
-/* console.log('BDLcStg: ', BDLcStg); */
-
-const nameBDApp = 'invited';
-const BDLocal = Object.entries(BDLcStg);
-
-let BD = [];
-for (const [key, value] of BDLocal) {
-  if (key == nameBDApp) {
-    BD = value;
-  } else {
-    BD = [];
-  }
-}
 
 /* CLASS */
 const message = new Message();
 const htmlCard = new HtmlCard();
 const htmlCardMini = new HtmlCardMini();
 const localStorageCall = new LocalStorageCall();
+/* VAR */
+const nameBDApp = 'party';
+const userBDApp = 'user';
 
-/* API ------ STAR */
+/* API CALL ------------------------------------------ STAR */
 const urlApi = '../data/products.json';
-/* localStorage.setItem('miGato', 'Pepe'); */
-
 const productsJSON = fetchData(urlApi).then((result) => {
   return result;
 });
+/* API  CALL ------------------------------------------ END */
 
-/* API ------ STAR */
+/* LOCAL STORAGE  ---------------------------- STAR */
+/* const BDStg = localStorageCall.getAll(nameBDApp); */
 
-console.log('productsJSON  type', typeof productsJSON);
+/* LOCAL STORAGE  ---------------------------- END */
 
 /* CARD */
 // Insert JSCard
@@ -56,6 +44,9 @@ createCard(productsJSON, 'JSCard-elements');
 
 // JSCardMini
 /* Add Product to cart */
+function starCardMini(cartName) {
+  let data = JSON.parse(cart.getItem(cartName));
+}
 function createCardMini(data, idName) {
   let drawCard = document.getElementById(idName);
   drawCard.innerHTML += htmlCardMini.html(data);
@@ -104,13 +95,31 @@ async function personAdd(id, idName) {
   data.forEach((e) => {
     if (e.id == id) {
       person = e;
+      /* console.log('person: ', person); */
     }
   });
   createCardMini(person, 'JSCardMini-elements');
   personToLocalStorage(person);
   addDeletedClassHidden(id, idName, false);
+  PushPerson(person, nameBDApp, localStorage);
 }
 window.personAdd = personAdd; // because the fucntion of module is not call in external files.
+
+function PushPerson(data, cartName, cart) {
+  let dataNew = [];
+  let dataOld = JSON.parse(cart.getItem(cartName));
+  if (!dataOld) {
+    dataOld = [];
+  } else {
+    dataOld.forEach((e) => {
+      if (e.id !== data.id) {
+        dataNew = [...dataOld];
+        dataNew.push(data);
+        cart.setItem(cartName, JSON.stringify(dataNew));
+      }
+    });
+  }
+}
 
 /* function obtener(data, id) {
   console.log(
