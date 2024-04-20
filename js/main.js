@@ -1,5 +1,5 @@
 /* import productsJSON from '../data/productsOBJ.js'; */
-
+import fetchData from './connect/fetchData.js';
 import { Message } from './connect/message.js';
 import { LocalStorageCall } from './connect/Localstorage.js';
 /* COMPONENTS */
@@ -35,30 +35,9 @@ const localStorageCall = new LocalStorageCall();
 const urlApi = '../data/products.json';
 /* localStorage.setItem('miGato', 'Pepe'); */
 
-async function fetchData(urlApi) {
-  try {
-    const response = await fetch(urlApi);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.log('error fetchData:', error);
-  }
-}
-
 const productsJSON = fetchData(urlApi).then((result) => {
   return result;
 });
-
-console.log('productsJSON: ', productsJSON);
-
-/* productsJSON.forEach((element) => {
-  console.log(element);
-}); */
-
-console.log('productsJSON', typeof productsJSON);
-/* localStorage.forEach((element) => {
-  console.log(e);
-}); */
 
 /* API ------ STAR */
 
