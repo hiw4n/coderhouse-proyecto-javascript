@@ -26,7 +26,7 @@ export class HtmlCard {
             </div>
         </div>
         <div class="JSCard_content-button">
-          <button onclick="personAdd(${id})" class=" btn btn-primary  ">
+          <button onclick="personAdd(${id}, '.JSCard_content')" class=" btn btn-primary  ">
           Invitar
             <i class="fa-solid fa-heart"></i>
               <i class="fa-regular fa-heart"></i>
@@ -34,11 +34,12 @@ export class HtmlCard {
         </div>
         <div class="JSCard_content-invited">
           <div class="JSCard_content-invited-image">
-              <img src="./image/${avatar}" alt="${name}" >
+            <img src="./image/${avatar}" alt="${name}" >
+            <div class="JSCard_content-invited-image-circle"></div>
           </div>
           <h5 class="JSCard_content-invited-name">${name}</h5>
           <p> <i>Is invited</i></p>
-          <button onclick="deletedAdd(${id})" class=" btn btn-primary  ">
+          <button onclick="personDeleted(${id}, '.JSCard_content')" class=" btn btn-primary  ">
             Borrar
             <i class="fa-solid fa-heart"></i>
             <i class="fa-regular fa-heart"></i>

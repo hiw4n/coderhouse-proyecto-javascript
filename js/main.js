@@ -45,22 +45,46 @@ createCard(productsJSON, 'JSCard-elements');
 function createCardMini(data, idName) {
   let drawCard = document.getElementById(idName);
   drawCard.innerHTML += htmlCardMini.html(data);
+  /* setTimeout(() => {
+    
+    drawCard.classList.removed('cardHidden');
+  }, 500); */
 }
-
+function deletedCardMini(id, idName) {
+  let data = document.getElementById(idName);
+  let person = data.querySelectorAll('.JSCardMini_content');
+  person.forEach((e) => {
+    if (e.dataset.id == id) {
+      e.classList.add('cardHidden');
+      setTimeout(() => {
+        e.remove('cardHidden');
+      }, 500);
+    }
+  });
+  /* let drawCard = document.getElementById(idName); */
+}
 function personToLocalStorage(data) {
   /* let DataAll = localStorageCall.getAll(productsJSON); */
 }
-/* function personFindCard(id, idName) { */
-function personFindCard(id, idName) {
+function addDeletedClassHidden(id, idName, deleted = false) {
   let personsAll = document.querySelectorAll(idName);
   personsAll.forEach((e, i) => {
     if (e.dataset.id == id) {
-      e.className += ' cardHidden';
+      if (deleted == true) {
+        e.classList.remove('cardHidden');
+      } else {
+        e.classList.add('cardHidden');
+      }
     }
   });
 }
+function personDeleted(id, idName) {
+  addDeletedClassHidden(id, idName, true);
+  deletedCardMini(id, 'JSCardMini-elements');
+}
+window.personDeleted = personDeleted; // because the fucntion of module is not call in external files.
 
-function personAdd(id) {
+function personAdd(id, idName) {
   let data = productsJSON;
   let person = {};
   data.forEach((e) => {
@@ -70,8 +94,9 @@ function personAdd(id) {
   });
   createCardMini(person, 'JSCardMini-elements');
   personToLocalStorage(person);
-  personFindCard(id, '.JSCard_content');
+  addDeletedClassHidden(id, idName, false);
 }
+
 window.personAdd = personAdd; // because the fucntion of module is not call in external files.
 
 /* function obtener(data, id) {
