@@ -1,5 +1,5 @@
 /* var */
-@import url(./var.css);
+@import url(../var.css);
 /* VAR */
 :root {
   --w-g: 400;
@@ -7,9 +7,19 @@
   --h-g: 450px;
   --h-general: 450px;
   --aspectRatio-general: calc(var(--h-g) / var(--v-g));
-  --JSCard-width: calc(100% / 2);
+  --JSCard-width: calc(100% / 3);
   --gap: 10px;
   --transition-general: all 0.5s ease-out;
+}
+@media screen and (max-width: 992px) {
+  :root {
+    --JSCard-width: calc(100% / 2);
+  }
+}
+@media screen and (max-width: 600px) {
+  :root {
+    --JSCard-width: calc(100% / 1);
+  }
 }
 #JSCard * {
   transition: var(--transition-general);

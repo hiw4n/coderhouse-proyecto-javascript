@@ -11,15 +11,15 @@ export class HtmlCardMini {
       <div class="JSCardMini_content-image">
           <img src="./image/${avatar}" alt="${name}" >
       </div>
-      <div class="JSCardMini_content-info">
+      <!-- <div class="JSCardMini_content-info">
           <h5 class="JSCardMini_content-info-name">${name}</h5>
-      </div>
+      </div>-->
       <div class="JSCardMini_content-button">
-          <a onclick="personDeleted(${id})" href="#"
-              class="JSCardMini_content-button-invited btn btn-primary ">Borrar<i
-                  class="fa-solid fa-heart"></i>
-              <i class="fa-regular fa-heart"></i>
-          </a>
+          <button onclick="personDeleted(${id})" href="#"
+              class="JSCardMini_content-button-invited btn btn-primary ">           
+              <i class="fa-normal fa-regular fa-trash-can"></i>
+              <i class="fa-hover fa-solid fa-trash-can"></i>
+          </button>
       </div>
     </div>
     `;
