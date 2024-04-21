@@ -1,19 +1,17 @@
 /* VAR ----------
 -----------------*/
 :root {
-    
-    /* COLORS */
-    --var-color-primary: blue;
-    --var-color-secundary: red;
-    --var-color-text-light: white;
-    
-    
-    --b-m: 2px solid red;
-  
-    /* FONTS */
-  
+  /* COLORS */
+  --var-color-primary: rgb(23 0 69);
+  --var-color-secundary: rgb(255 0 111);
+  --var-color-3: rgb(255 148 255);
+  --var-color-4: rgb(255 225 3);
+  --var-color-text-light: rgb(240 240 250);
 
-    /* COMPONENT*/
-    --comp-gap: 16px;
-    
-  }
+  --b-m: 2px solid red;
+
+  /* FONTS */
+
+  /* COMPONENT*/
+  --comp-gap: 16px;
+}

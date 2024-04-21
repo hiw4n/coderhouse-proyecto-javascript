@@ -1,3 +1,5 @@
+/* var */
+@import url(./var.css);
 /* VAR */
 :root {
   --w-g: 400;
@@ -5,22 +7,20 @@
   --h-g: 450px;
   --h-general: 450px;
   --aspectRatio-general: calc(var(--h-g) / var(--v-g));
-
-  --JSCard-width: calc(100% / 3);
-  --gap: 20px;
-
+  --JSCard-width: calc(100% / 2);
+  --gap: 10px;
   --transition-general: all 0.5s ease-out;
 }
-* {
+#JSCard * {
   transition: var(--transition-general);
 }
-*:hover {
+#JSCard *:hover {
   transition: var(--transition-general);
 }
 
 /* CODE */
 #JSCard {
-  padding: 32px;
+  padding: 18px;
 }
 
 #JSCard-elements {
@@ -36,8 +36,6 @@
 } */
 
 .JSCard_content {
-  /*  border: var(--b-m); */
-  /* width: max-content; */
   width: calc(var(--JSCard-width) - var(--gap));
   display: flex;
   flex-direction: row;
@@ -73,13 +71,15 @@
   aspect-ratio: 1;
 }
 .JSCard_content-image::before {
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(5px);
   z-index: 1;
 }
 .JSCard_content-image.JSCard_content-image::after {
-  border: 3px solid rgba(255, 255, 255, 0.8);
-  box-shadow: inset 0px 0px 10px 10px rgba(255, 255, 255, 0.4);
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  -webkit-box-shadow: inset 0px 0px 10px 10px rgba(255, 125, 255, 0.2);
+  -moz-box-shadow: inset 0px 0px 10px 10px rgba(255, 125, 255, 0.2);
+  box-shadow: inset 0px 0px 10px 10px rgba(255, 125, 255, 0.2);
   z-index: 2;
 }
 .JSCard_content-info,
@@ -113,23 +113,6 @@
   align-items: center;
 }
 
-.JSCard_content-button {
-  display: flex;
-  flex-direction: column;
-  justify-content: bottom;
-  align-items: center;
-  z-index: 5;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-}
-.JSCard_content-button .btn {
-  width: fit-content;
-  align-items: center;
-}
-.JSCard_content-button-invited {
-}
-
 .JSCard_content-invited {
   position: absolute;
   display: flex;
@@ -147,8 +130,13 @@
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
-  background-color: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  background-color: rgb(21 0 68 / 50%) !important;
+  border: 2px solid rgb(23 0 69);
+  color: var(--var-color-text-light);
+  text-align: center;
+}
+.JSCard_content-invited h5 {
+  font-size: 15px;
 }
 
 .JSCard_content.cardHidden {
@@ -165,36 +153,75 @@
 
 .JSCard_content.cardHidden .JSCard_content-invited {
   display: flex;
+  padding-top: 59px;
   flex-direction: column;
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
   border-radius: 16px;
-}
-.JSCard_content-invited-image,
-.JSCard_content-invited-image-circle {
+  justify-content: space-between;
 }
 .JSCard_content-invited-image {
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0 0 1000px 1000px;
-}
-
-.JSCard_content-invited-image-circle {
-  background-color: rgba(255, 255, 255, 0.9);
   position: absolute;
-  border-radius: 1000px;
+  top: -13px;
   --s: 65px;
   width: var(--s);
   height: var(--s);
+  overflow: hidden;
+  z-index: 2;
+  border-radius: 1000px;
+  background-color: rgba(255, 125, 255, 0.6);
 }
 .JSCard_content-invited-image img {
   width: 100%;
   height: 100%;
-  z-index: 2;
 }
+
+.JSCard_content-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: bottom;
+  align-items: center;
+  z-index: 5;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.JSCard_content-button button {
+  width: fit-content;
+  align-items: center;
+  background-color: var(--var-color-secundary);
+  border: 1px solid var(--var-color-secundary);
+}
+.JSCard_content-button button:hover {
+  background-color: var(--var-color-3);
+  border: 1px solid var(--var-color-3);
+}
+
 .JSCard_content-invited button {
   pointer-events: all;
+  background-color: var(--var-color-primary);
+  border: 1px solid var(--var-color-primary);
+}
+.JSCard_content-invited button:hover {
+  background-color: var(--var-color-4);
+  border: 1px solid var(--var-color-4);
+  color: var(--var-color-primary);
+}
+
+.JSCard_content-button button .fa-normal,
+.JSCard_content-invited button .fa-normal,
+.JSCard_content-button button:hover .fa-hover,
+.JSCard_content-invited button:hover .fa-hover {
+  opacity: 0;
+  font-size: 0;
+  transform: scale(0);
+}
+.JSCard_content-button button:hover .fa-normal,
+.JSCard_content-invited button:hover .fa-normal,
+.JSCard_content-button button .fa-hover,
+.JSCard_content-invited button .fa-hover {
+  opacity: 1;
+  font-size: 16px;
+  transform: scale(1);
 }

@@ -4,12 +4,14 @@
 @import url(./plugings/animate.css);
 /* SweetAlert: https://sweetalert2.github.io/*/
 @import url(./plugings/sweetalert/sweetalert2.min.css);
-/* fonts */
+/* var */
 @import url(./var.css);
 /* fonts */
 @import url(./fonts.css);
 /* Background */
 @import url(./components/background.css);
+/* nav */
+@import url(./components/nav.css);
 /* Components */
 @import url(./components/JSCard.css);
 @import url(./components/JSCardMini.css);
@@ -30,34 +32,6 @@ body {
 }
 body {
   position: relative;
-}
-
-/* NAV ----------------
------------------------*/
-.navbar {
-  padding: 10px 20px;
-}
-.navbar-card {
-}
-.navbar-card i {
-  position: relative;
-  font-size: 30px;
-}
-.navbar-card-number {
-  position: absolute;
-  right: -5px;
-  top: -5px;
-  background-color: var(--var-color-primary);
-  color: var(--var-color-text-light);
-  font-size: 9px;
-  --m: 20px;
-  height: var(--m);
-  width: var(--m);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100px;
-  font-weight: bold;
 }
 
 .productos,
