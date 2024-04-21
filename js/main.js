@@ -26,11 +26,6 @@ const productsJSON = fetchData(urlApi).then((result) => {
 });
 /* API  CALL ------------------------------------------ END */
 
-/* LOCAL STORAGE  ---------------------------- STAR */
-/* const BDStg = localStorageCall.getAll(nameBDApp); */
-
-/* LOCAL STORAGE  ---------------------------- END */
-
 /* CARD */
 // Insert JSCard
 async function createCard(data, idName) {
@@ -83,7 +78,7 @@ function addDeletedClassHidden(id, idName, deleted = false) {
     }
   });
 }
-async function finDperson(id) {
+async function findPerson(id) {
   let data = await productsJSON;
   let person = {};
   data.forEach((e) => {
@@ -94,8 +89,9 @@ async function finDperson(id) {
   return person;
 }
 
+/* ONLICK -------------------------------------- STAR --*/
 async function personDeleted(id, idName) {
-  let person = await finDperson(id, idName);
+  let person = await findPerson(id, idName);
   addDeletedClassHidden(id, idName, true);
   deletedCardMini(id, 'JSCardMini-elements');
   deletedPerson(person, nameBDApp, localStorage);
@@ -103,13 +99,26 @@ async function personDeleted(id, idName) {
 window.personDeleted = personDeleted; // because the fucntion of module is not call in external files.
 
 async function personAdd(id, idName) {
-  let person = await finDperson(id, idName);
+  let person = await findPerson(id, idName);
   createCardMini(person, 'JSCardMini-elements');
   personToLocalStorage(person);
   addDeletedClassHidden(id, idName, false);
   pushPerson(person, nameBDApp, localStorage);
 }
 window.personAdd = personAdd; // because the fucntion of module is not call in external files.
+/* ONLICK -------------------------------------- END --*/
+
+/* LOCALSTORAGE -------------------------------------- STAR --*/
+function iniShowCard(cartName, cart) {
+  if (cart) {
+    cart = JSON.parse(cart.getItem(cartName));
+    cart.forEach((e) => {
+      console.log('e', e);
+      createCardMini(e, 'JSCardMini-elements');
+    });
+  }
+}
+iniShowCard(nameBDApp, localStorage);
 
 function pushPerson(data, cartName, cart) {
   let dataNew = [];
@@ -143,11 +152,4 @@ function deletedPerson(data, cartName, cart) {
 
   cart.setItem(cartName, JSON.stringify(dataNew));
 }
-
-/* function obtener(data, id) {
-  console.log(
-    'localStorageCall.getById(data, id);',
-    localStorageCall.getById(data, id)YY77YUY7
-  );
-  return localStorageCall.getById(data, id);
-} */
+/* LOCALSTORAGE -------------------------------------- END --*/
