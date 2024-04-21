@@ -2,7 +2,7 @@
 
 
 
-## I used this framework :P
+## I used this framework and librarys :P
 
 ### html / css
  * Bootstrap:  https://getbootstrap.com/
@@ -13,6 +13,9 @@
   
 ### IconFont
  * Fontawesome: https://fontawesome.com/
+
+### Librarys:
+ * js-confetti: https://www.npmjs.com/package/js-confetti
   
 ## SCHEMA PROJECT
 ```

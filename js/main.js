@@ -2,6 +2,9 @@
 import fetchData from './connect/fetchData.js';
 import { Message } from './connect/message.js';
 import { LocalStorageCall } from './connect/Localstorage.js';
+
+import JSConfetti from './components/js-confetti.js';
+
 /* COMPONENTS */
 
 import { HtmlCard } from './components/HtmlCard.js';
@@ -15,6 +18,8 @@ const message = new Message();
 const htmlCard = new HtmlCard();
 const htmlCardMini = new HtmlCardMini();
 const localStorageCall = new LocalStorageCall();
+const jsConfetti = new JSConfetti();
+
 /* VAR */
 const nameBDApp = 'party';
 const userBDApp = 'user';
@@ -36,6 +41,13 @@ async function createCard(data, idName) {
   });
 }
 createCard(productsJSON, 'JSCard-elements');
+
+function invitedNumber(cart, idName, cartName) {
+  let data = JSON.parse(cart.getItem(cartName));
+  let number = data.length;
+  let drawCard = document.getElementById(idName);
+  drawCard.innerHTML = number;
+}
 
 // JSCardMini
 /* Add Product to cart */
@@ -67,6 +79,7 @@ function personToLocalStorage(data) {
   /* let DataAll = localStorageCall.getAll(productsJSON); */
 }
 function addDeletedClassHidden(id, idName, deleted = false) {
+  console.log('entro');
   let personsAll = document.querySelectorAll(idName);
   personsAll.forEach((e, i) => {
     if (e.dataset.id == id) {
@@ -95,6 +108,8 @@ async function personDeleted(id, idName) {
   addDeletedClassHidden(id, idName, true);
   deletedCardMini(id, 'JSCardMini-elements');
   deletedPerson(person, nameBDApp, localStorage);
+  invitedNumber(localStorage, 'Person_number', nameBDApp);
+  invitedNumber(localStorage, 'card-mini-head_number-invite', nameBDApp);
 }
 window.personDeleted = personDeleted; // because the fucntion of module is not call in external files.
 
@@ -104,19 +119,29 @@ async function personAdd(id, idName) {
   personToLocalStorage(person);
   addDeletedClassHidden(id, idName, false);
   pushPerson(person, nameBDApp, localStorage);
+  jsConfetti.addConfetti();
+  invitedNumber(localStorage, 'Person_number', nameBDApp);
+  invitedNumber(localStorage, 'card-mini-head_number-invite', nameBDApp);
 }
 window.personAdd = personAdd; // because the fucntion of module is not call in external files.
 /* ONLICK -------------------------------------- END --*/
 
 /* LOCALSTORAGE -------------------------------------- STAR --*/
 function iniShowCard(cartName, cart) {
+  let time = 500;
   if (cart) {
     cart = JSON.parse(cart.getItem(cartName));
-    cart.forEach((e) => {
-      console.log('e', e);
-      createCardMini(e, 'JSCardMini-elements');
+    cart.forEach((e, i) => {
+      time = time + 100;
+      setTimeout(() => {
+        createCardMini(e, 'JSCardMini-elements');
+        addDeletedClassHidden(e.id, '.JSCard_content', false);
+      }, time);
     });
   }
+
+  invitedNumber(localStorage, 'Person_number', nameBDApp);
+  invitedNumber(localStorage, 'card-mini-head_number-invite', nameBDApp);
 }
 iniShowCard(nameBDApp, localStorage);
 
