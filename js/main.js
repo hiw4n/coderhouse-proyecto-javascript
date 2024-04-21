@@ -83,33 +83,38 @@ function addDeletedClassHidden(id, idName, deleted = false) {
     }
   });
 }
-function personDeleted(id, idName) {
-  addDeletedClassHidden(id, idName, true);
-  deletedCardMini(id, 'JSCardMini-elements');
-}
-window.personDeleted = personDeleted; // because the fucntion of module is not call in external files.
-
-async function personAdd(id, idName) {
+async function finDperson(id) {
   let data = await productsJSON;
   let person = {};
   data.forEach((e) => {
     if (e.id == id) {
       person = e;
-      /* console.log('person: ', person); */
     }
   });
+  return person;
+}
+
+async function personDeleted(id, idName) {
+  let person = await finDperson(id, idName);
+  addDeletedClassHidden(id, idName, true);
+  deletedCardMini(id, 'JSCardMini-elements');
+  deletedPerson(person, nameBDApp, localStorage);
+}
+window.personDeleted = personDeleted; // because the fucntion of module is not call in external files.
+
+async function personAdd(id, idName) {
+  let person = await finDperson(id, idName);
   createCardMini(person, 'JSCardMini-elements');
   personToLocalStorage(person);
   addDeletedClassHidden(id, idName, false);
-  PushPerson(person, nameBDApp, localStorage);
+  pushPerson(person, nameBDApp, localStorage);
 }
 window.personAdd = personAdd; // because the fucntion of module is not call in external files.
 
-function PushPerson(data, cartName, cart) {
+function pushPerson(data, cartName, cart) {
   let dataNew = [];
   let dataOld = JSON.parse(cart.getItem(cartName));
   let same = false;
-  console.log('dataOld: ', dataOld);
 
   if (!dataOld) dataOld = [];
 
@@ -124,6 +129,19 @@ function PushPerson(data, cartName, cart) {
     dataNew.push(data);
     cart.setItem(cartName, JSON.stringify(dataNew));
   }
+}
+
+function deletedPerson(data, cartName, cart) {
+  let dataNew = [];
+  let dataOld = JSON.parse(cart.getItem(cartName));
+
+  dataOld.forEach((e) => {
+    if (e.id !== data.id) {
+      dataNew.push(e);
+    }
+  });
+
+  cart.setItem(cartName, JSON.stringify(dataNew));
 }
 
 /* function obtener(data, id) {
