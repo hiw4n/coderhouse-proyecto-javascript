@@ -108,23 +108,28 @@ window.personAdd = personAdd; // because the fucntion of module is not call in e
 function PushPerson(data, cartName, cart) {
   let dataNew = [];
   let dataOld = JSON.parse(cart.getItem(cartName));
-  if (!dataOld) {
-    dataOld = [];
-  } else {
-    dataOld.forEach((e) => {
-      if (e.id !== data.id) {
-        dataNew = [...dataOld];
-        dataNew.push(data);
-        cart.setItem(cartName, JSON.stringify(dataNew));
-      }
-    });
+  let same = false;
+  console.log('dataOld: ', dataOld);
+
+  if (!dataOld) dataOld = [];
+
+  dataOld.forEach((e) => {
+    if (e.id == data.id) {
+      same = true;
+    }
+  });
+
+  if (!same) {
+    dataNew = [...dataOld];
+    dataNew.push(data);
+    cart.setItem(cartName, JSON.stringify(dataNew));
   }
 }
 
 /* function obtener(data, id) {
   console.log(
     'localStorageCall.getById(data, id);',
-    localStorageCall.getById(data, id)
+    localStorageCall.getById(data, id)YY77YUY7
   );
   return localStorageCall.getById(data, id);
 } */

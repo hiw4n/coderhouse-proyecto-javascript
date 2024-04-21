@@ -6,7 +6,7 @@
   --h-general: 450px;
   --aspectRatio-general: calc(var(--h-g) / var(--v-g));
 
-  --JSCard-width: calc(100% / 2);
+  --JSCard-width: calc(100% / 3);
   --gap: 20px;
 
   --transition-general: all 0.5s ease-out;
