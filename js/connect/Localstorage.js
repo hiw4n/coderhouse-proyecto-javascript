@@ -9,10 +9,10 @@ export class LocalStorageCall {
 
   getAll(nameBDApp, cart = this.cart) {
     try {
-      console.log('cart: ', cart);
-      console.log('nameBDApp: ', nameBDApp);
+      /* console.log('cart: ', cart); */
+      /* console.log('nameBDApp: ', nameBDApp); */
       data.every((e) => {
-        console - log('e', e);
+        /* console - log('e', e); */
       });
       /* const value = this.cart.getItem(data);
       console.log('value: ', value);
@@ -31,12 +31,12 @@ export class LocalStorageCall {
     try {
       data.forEach((e) => {
         if (e.id == id) {
-          console.log('e', e);
+          /* console.log('e', e); */
           return e;
         }
       });
     } catch (error) {
-      console.log(error);
+      /* console.log(error); */
     }
   }
 

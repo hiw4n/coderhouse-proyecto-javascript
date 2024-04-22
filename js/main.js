@@ -9,8 +9,6 @@ import { HtmlCard } from './components/HtmlCard.js';
 import { HtmlCardMini } from './components/HtmlCardMini.js';
 import { HtmlSlider } from './components/HtmlSlider.js';
 
-/* localStorage.setItem('miGato', 'Pepe'); */
-
 /* CLASS */
 const message = new Message();
 const htmlCard = new HtmlCard();
@@ -77,7 +75,6 @@ function personToLocalStorage(data) {
   /* let DataAll = localStorageCall.getAll(productsJSON); */
 }
 function addDeletedClassHidden(id, idName, deleted = false) {
-  console.log('entro');
   let personsAll = document.querySelectorAll(idName);
   personsAll.forEach((e, i) => {
     if (e.dataset.id == id) {
