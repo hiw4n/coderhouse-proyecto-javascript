@@ -1,0 +1,49 @@
+/* var */
+@import url(./var.css);
+/* NAV ----------------
+-----------------------*/
+.navbar {
+  padding: 10px 20px;
+  margin: 20px;
+  margin-left: 95px;
+  margin-right: 77px;
+  border-radius: 16px;
+  border: 2px solid rgb(23 0 69);
+  background-color: rgb(21 0 68 / 50%) !important;
+  min-height: 50px;
+}
+.navbar-card {
+  position: absolute;
+  right: -55px;
+}
+.navbar-card img {
+  width: 50px;
+}
+.navbar-card i {
+  position: relative;
+  font-size: 30px;
+}
+.navbar-card-number {
+  position: absolute;
+  right: 33px;
+  top: 6px;
+  background-color: var(--var-color-secundary);
+  color: var(--var-color-4);
+  font-size: 20px;
+  --m: 32px;
+  height: var(--m);
+  width: var(--m);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  font-weight: bold;
+}
+.navbar-brand {
+  position: absolute;
+  left: -80px;
+}
+.navbar-brand img {
+  aspect-ratio: 150 / 250;
+  width: 143px;
+}

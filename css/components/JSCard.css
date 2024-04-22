@@ -1,3 +1,5 @@
+/* var */
+@import url(../var.css);
 /* VAR */
 :root {
   --w-g: 400;
@@ -5,26 +7,52 @@
   --h-g: 450px;
   --h-general: 450px;
   --aspectRatio-general: calc(var(--h-g) / var(--v-g));
-
-  --JSCard-width: calc(100% / 2);
+  --JSCard-width: calc(100% / 3);
+  --gap: 10px;
+  --transition-general: all 0.5s ease-out;
+}
+@media screen and (max-width: 992px) {
+  :root {
+    --JSCard-width: calc(100% / 2);
+  }
+}
+@media screen and (max-width: 600px) {
+  :root {
+    --JSCard-width: calc(100% / 1);
+  }
+}
+#JSCard * {
+  transition: var(--transition-general);
+}
+#JSCard *:hover {
+  transition: var(--transition-general);
 }
 
 /* CODE */
-#JScard {
+#JSCard {
+  padding: 18px;
 }
 
-#JScard-elements {
+#JSCard-elements {
+  display: flex;
+  gap: var(--gap);
+  flex-direction: row;
+  flex-wrap: wrap;
 }
+/* .JSCard-elements:hover > :not(:hover) {
+  opacity: 0.8;
+  transform: scale(0.8);
+  filter: blur(1px);
+} */
 
 .JSCard_content {
-  border: var(--b-m);
-  /* width: max-content; */
-  width: var(--JSCard-width);
+  width: calc(var(--JSCard-width) - var(--gap));
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: var(--comp-gap);
   position: relative;
+  overflow: hidden;
 }
 .JSCard_content,
 .JSCard_content-image,
@@ -53,36 +81,157 @@
   aspect-ratio: 1;
 }
 .JSCard_content-image::before {
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(5px);
   z-index: 1;
 }
 .JSCard_content-image.JSCard_content-image::after {
-  border: 3px solid rgba(255, 255, 255, 0.8);
-  box-shadow: inset 0px 0px 10px 10px rgba(255, 255, 255, 0.4);
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  -webkit-box-shadow: inset 0px 0px 10px 10px rgba(255, 125, 255, 0.2);
+  -moz-box-shadow: inset 0px 0px 10px 10px rgba(255, 125, 255, 0.2);
+  box-shadow: inset 0px 0px 10px 10px rgba(255, 125, 255, 0.2);
   z-index: 2;
 }
-.JSCard_content-info{
-    width: 100%;
-    aspect-ratio: 1;
-    padding: 6px;
-    background-color: rgba(255, 255, 255, 1);
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    border-radius: 10000px;
+.JSCard_content-info,
+.JSCard_content-info-inner {
+  border-radius: 10px;
 }
-.JSCard_content-button{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    z-index: 4;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
+.JSCard_content-info {
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 5%;
+  position: absolute;
+  bottom: -300px;
+  left: 0;
+  z-index: 4;
+  transition: var(--transition-general);
 }
-.JSCard_content-button .btn{
-    width: fit-content;
-    align-items: center;
+.JSCard_content:hover .JSCard_content-info {
+  transition: var(--transition-general);
+  bottom: 10px;
+  left: 0;
+}
+.JSCard_content-info-inner {
+  background-color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.JSCard_content-invited {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 6;
+  margin: auto;
+  padding: 20px;
+  opacity: 0;
+  top: 0px;
+  left: 0;
+  width: 90%;
+  height: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  background-color: rgb(21 0 68 / 50%) !important;
+  border: 2px solid rgb(23 0 69);
+  color: var(--var-color-text-light);
+  text-align: center;
+}
+.JSCard_content-invited h5 {
+  font-size: 15px;
+}
+
+.JSCard_content.cardHidden {
+  pointer-events: none;
+}
+.JSCard_content.cardHidden .JSCard_content-button,
+.JSCard_content.cardHidden .JSCard_content-info {
+  display: none;
+}
+.JSCard_content.cardHidden .JSCard_content-image {
+  filter: blur(7px);
+  transform: scale(0.9);
+}
+
+.JSCard_content.cardHidden .JSCard_content-invited {
+  display: flex;
+  padding-top: 59px;
+  flex-direction: column;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  border-radius: 16px;
+  justify-content: space-between;
+}
+.JSCard_content-invited-image {
+  position: absolute;
+  top: -13px;
+  --s: 65px;
+  width: var(--s);
+  height: var(--s);
+  overflow: hidden;
+  z-index: 2;
+  border-radius: 1000px;
+  background-color: rgba(255, 125, 255, 0.6);
+}
+.JSCard_content-invited-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.JSCard_content-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: bottom;
+  align-items: center;
+  z-index: 5;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.JSCard_content-button button {
+  width: fit-content;
+  align-items: center;
+  background-color: var(--var-color-secundary);
+  border: 1px solid var(--var-color-secundary);
+}
+.JSCard_content-button button:hover {
+  background-color: var(--var-color-3);
+  border: 1px solid var(--var-color-3);
+}
+
+.JSCard_content-invited button {
+  pointer-events: all;
+  background-color: var(--var-color-primary);
+  border: 1px solid var(--var-color-primary);
+}
+.JSCard_content-invited button:hover {
+  background-color: var(--var-color-4);
+  border: 1px solid var(--var-color-4);
+  color: var(--var-color-primary);
+}
+
+.JSCard_content-button button .fa-normal,
+.JSCard_content-invited button .fa-normal,
+.JSCard_content-button button:hover .fa-hover,
+.JSCard_content-invited button:hover .fa-hover {
+  opacity: 0;
+  font-size: 0;
+  transform: scale(0);
+}
+.JSCard_content-button button:hover .fa-normal,
+.JSCard_content-invited button:hover .fa-normal,
+.JSCard_content-button button .fa-hover,
+.JSCard_content-invited button .fa-hover {
+  opacity: 1;
+  font-size: 16px;
+  transform: scale(1);
 }

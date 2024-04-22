@@ -4,12 +4,17 @@
 @import url(./plugings/animate.css);
 /* SweetAlert: https://sweetalert2.github.io/*/
 @import url(./plugings/sweetalert/sweetalert2.min.css);
-/* fonts */
+/* var */
 @import url(./var.css);
 /* fonts */
 @import url(./fonts.css);
+/* Background */
+@import url(./components/background.css);
+/* nav */
+@import url(./components/nav.css);
 /* Components */
 @import url(./components/JSCard.css);
+@import url(./components/JSCardMini.css);
 
 /* FORMAT BOOTSTRAP */
 .card-body {
@@ -18,38 +23,15 @@
   flex: 1 2;
 }
 
+html,
 body {
-  background-image: url(../image/background.jpg);
-  background-size: contain;
-  backdrop-filter: blur(18px);
-  background-attachment: fixed;
+  width: 100%;
+  /* height: 100%; */
+  height: max-content;
+  min-height: 100% !important;
 }
-/* NAV ----------------
------------------------*/
-.navbar {
-  padding: 10px 20px;
-}
-.navbar-card {
-}
-.navbar-card i {
+body {
   position: relative;
-  font-size: 30px;
-}
-.navbar-card-number {
-  position: absolute;
-  right: -5px;
-  top: -5px;
-  background-color: var(--var-color-primary);
-  color: var(--var-color-text-light);
-  font-size: 9px;
-  --m: 20px;
-  height: var(--m);
-  width: var(--m);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100px;
-  font-weight: bold;
 }
 
 .productos,

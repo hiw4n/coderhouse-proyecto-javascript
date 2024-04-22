@@ -1,0 +1,100 @@
+/* var */
+@import url(../var.css);
+
+#JSCardMini {
+  padding: 8px;
+}
+.JSCardMini {
+  background-color: rgb(21 0 68 / 50%) !important;
+  border: 2px solid rgb(23 0 69);
+  border-radius: 16px;
+  padding: 16px;
+  margin: 10px;
+  text-align: center;
+}
+.card-mini-head {
+  color: var(--var-color-text-light);
+}
+.card-mini-head h2 {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.card-mini-head .card-mini-head_number-invite {
+  display: inline-block;
+  --s: 20px;
+  width: var(--s);
+  height: var(--s);
+  border-radius: var(--s);
+  background-color: var(--var-color-4);
+  color: var(--var-color-secundary);
+}
+.JSCardMini-elements {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: stretch;
+  gap: 8px;
+}
+.JSCardMini_content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: rgba(255, 255, 255, 1); */
+  height: max-content;
+  position: relative;
+  margin-bottom: 18px;
+}
+.JSCardMini_content-image {
+  --s: 80px;
+  width: var(--s);
+  height: var(--s);
+  overflow: hidden;
+  z-index: 2;
+  border-radius: var(--s);
+  background-color: rgba(255, 125, 255, 0.6);
+}
+.JSCardMini_content-image img {
+  width: 100%;
+  height: 100%;
+}
+.JSCardMini_content-info {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+}
+.JSCardMini_content-button {
+}
+.JSCardMini_content-button .btn {
+  border-radius: 100px;
+  position: absolute;
+  bottom: -17px;
+  z-index: 2;
+  left: 50%;
+  border: none;
+  transform: translateX(-50%);
+  background-color: var(--var-color-primary);
+}
+.JSCardMini_content-button .btn:hover {
+  background-color: var(--var-color-secundary);
+}
+
+.JSCardMini_content-button button .fa-normal,
+.JSCardMini_content-button button:hover .fa-hover {
+  opacity: 0;
+  font-size: 0;
+  transform: scale(0);
+  display: none;
+}
+.JSCardMini_content-button button:hover .fa-normal,
+.JSCardMini_content-button button .fa-hover {
+  opacity: 1;
+  font-size: 16px;
+  transform: scale(1);
+  display: inline;
+}
