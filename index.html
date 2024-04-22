@@ -4,12 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="./css/plugings/sweetalert/sweetalert2.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>Entrega Final CoderHOuse Javascript</title>
 </head>
 
 <body>
+    <!-- SWEETALERT -- START --------------------------------------------------->
+    <template id="my-template">
+        <swal-title>
+          Todos los invitados han sido eliminados
+        </swal-title>
+        <swal-icon type="success" color="blue"></swal-icon>
+
+        <swal-param name="allowEscapeKey" value="false" />
+        <swal-param
+          name="customClass"
+          value='{ "popup": "my-popup" }' />
+        <swal-function-param
+          name="didOpen"
+          value="popup => console.log(popup)" />
+        </template>
+        <!-- SWEETALERT -- END --------------------------------------------------->
     <!-- <div class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
     </div> -->
@@ -124,7 +140,7 @@
                             </div>
                         </main>
                         <div class="JSCardMini_content-button-deleted_all">
-                            <button onclick="personDeletedAll()" href="#" class="JSCardMini_content-button-invited-button_deleted_all btn btn-primary ">           
+                            <button onclick="deleteAllPerson()" href="#" class="show-example-btn JSCardMini_content-button-invited-button_deleted_all btn btn-primary ">           
                                 Borrar todos 
                                 <i class="fa-normal fa-regular fa-trash-can"></i>
                                 <i class="fa-hover fa-solid fa-trash-can"></i>
@@ -149,6 +165,15 @@
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
     <!-- JS LIBRARY -->
+    <script src="./js/plugings/sweetalert/sweetalert2.all.min.js"></script>
+    <script>
+        function deleteAllPerson(){
+        personDeletedAll()
+            Swal.fire({
+                template: "#my-template"
+            });
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
     <!---- JS  -->
     <script src="./js/components/background.js"></script>

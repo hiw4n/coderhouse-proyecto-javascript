@@ -2,11 +2,9 @@
 import fetchData from './connect/fetchData.js';
 import { Message } from './connect/message.js';
 import { LocalStorageCall } from './connect/Localstorage.js';
-
+/* PLUGING */
 import JSConfetti from './components/js-confetti.js';
-
 /* COMPONENTS */
-
 import { HtmlCard } from './components/HtmlCard.js';
 import { HtmlCardMini } from './components/HtmlCardMini.js';
 import { HtmlSlider } from './components/HtmlSlider.js';
