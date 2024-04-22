@@ -1,10 +1,6 @@
-# End Proyect, for javascript Coderhouse project.
+# End Proyect, for javascript Coderhouse project
+
 This repository is the finished project to course of javascript. I did a web to invite people to make a party  ;).
-
-
-
-
-
 
 ## How used
 
@@ -20,14 +16,12 @@ This repository is the finished project to course of javascript. I did a web to 
  * Bootstrap:  https://getbootstrap.com/
  * Animate.css: https://animate.style/
   
-### Javascript
- * SweetAlert: https://sweetalert2.github.io/
-  
 ### IconFont
  * Fontawesome: https://fontawesome.com/
 
 ### Librarys:
  * js-confetti: https://www.npmjs.com/package/js-confetti
+ * SweetAlert: https://sweetalert2.github.io/
   
 ## SCHEMA PROJECT
 
