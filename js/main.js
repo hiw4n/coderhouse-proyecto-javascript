@@ -127,12 +127,12 @@ window.personAdd = personAdd; // because the fucntion of module is not call in e
 /* ONLICK -------------------------------------- END --*/
 
 /* LOCALSTORAGE -------------------------------------- STAR --*/
-function iniShowCard(cartName, cart) {
+async function iniShowCard(cartName, cart) {
   let time = 500;
   if (cart) {
-    cart = JSON.parse(cart.getItem(cartName));
-    cart.forEach((e, i) => {
-      time = time + 100;
+    cart = await JSON.parse(cart.getItem(cartName));
+    cart.forEach((e) => {
+      time = time + 500;
       setTimeout(() => {
         createCardMini(e, 'JSCardMini-elements');
         addDeletedClassHidden(e.id, '.JSCard_content', false);
@@ -177,4 +177,13 @@ function deletedPerson(data, cartName, cart) {
 
   cart.setItem(cartName, JSON.stringify(dataNew));
 }
+
+async function personDeletedAll(cartName = nameBDApp, cart = localStorage){
+  const cartOld = await JSON.parse(cart.getItem(cartName));
+  cart.removeItem(cartName);
+  cartOld.forEach((e)=>{
+    personDeleted(e.id, '.JSCard_content')
+  });
+}
+window.personDeletedAll = personDeletedAll; // because the fucntion of module is not call in external files.
 /* LOCALSTORAGE -------------------------------------- END --*/

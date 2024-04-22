@@ -3,6 +3,7 @@
 
 #JSCardMini {
   padding: 8px;
+  z-index: 1;
 }
 .JSCardMini {
   background-color: rgb(21 0 68 / 50%) !important;
@@ -30,11 +31,12 @@
 }
 .JSCardMini-elements {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: center;
-  align-items: stretch;
-  gap: 8px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: stretch;
+    gap: 8px;
+    justify-content: center;
 }
 .JSCardMini_content {
   position: relative;
@@ -70,6 +72,20 @@
 }
 .JSCardMini_content-button {
 }
+.JSCardMini_content-button-deleted_all{
+  margin-top: 24px;
+}
+.JSCardMini_content-button .btn,
+.JSCardMini_content-button-deleted_all .btn:hover  {
+  border: none;
+  background-color: var(--var-color-primary);
+}
+.JSCardMini_content-button .btn:hover,
+.JSCardMini_content-button-deleted_all .btn{
+  border: none;
+  background-color: var(--var-color-secundary);
+}
+
 .JSCardMini_content-button .btn {
   border-radius: 100px;
   position: absolute;
@@ -78,21 +94,20 @@
   left: 50%;
   border: none;
   transform: translateX(-50%);
-  background-color: var(--var-color-primary);
 }
-.JSCardMini_content-button .btn:hover {
-  background-color: var(--var-color-secundary);
-}
-
 .JSCardMini_content-button button .fa-normal,
-.JSCardMini_content-button button:hover .fa-hover {
+.JSCardMini_content-button-deleted_all button .fa-normal,
+.JSCardMini_content-button button:hover .fa-hover,
+.JSCardMini_content-button-deleted_all button:hover .fa-hover {
   opacity: 0;
   font-size: 0;
   transform: scale(0);
   display: none;
 }
 .JSCardMini_content-button button:hover .fa-normal,
-.JSCardMini_content-button button .fa-hover {
+.JSCardMini_content-button-deleted_all button:hover .fa-normal,
+.JSCardMini_content-button button .fa-hover,
+.JSCardMini_content-button-deleted_all button .fa-hover {
   opacity: 1;
   font-size: 16px;
   transform: scale(1);
