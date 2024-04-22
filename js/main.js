@@ -165,9 +165,9 @@ function pushPerson(data, cartName, cart) {
   }
 }
 
-function deletedPerson(data, cartName, cart) {
+async function deletedPerson(data, cartName, cart) {
   let dataNew = [];
-  let dataOld = JSON.parse(cart.getItem(cartName));
+  let dataOld = await JSON.parse(cart.getItem(cartName));
 
   dataOld.forEach((e) => {
     if (e.id !== data.id) {
@@ -180,10 +180,18 @@ function deletedPerson(data, cartName, cart) {
 
 async function personDeletedAll(cartName = nameBDApp, cart = localStorage){
   const cartOld = await JSON.parse(cart.getItem(cartName));
-  cart.removeItem(cartName);
   cartOld.forEach((e)=>{
     personDeleted(e.id, '.JSCard_content')
   });
+  
+  cart.removeItem(cartName);
+  
+  const number = 0;
+  let drawCardLogo = document.getElementById('Person_number');
+  let drawCard = document.getElementById('card-mini-head_number-invite');
+  drawCardLogo.innerHTML = number;
+  drawCard.innerHTML = number;
+
 }
 window.personDeletedAll = personDeletedAll; // because the fucntion of module is not call in external files.
 /* LOCALSTORAGE -------------------------------------- END --*/
