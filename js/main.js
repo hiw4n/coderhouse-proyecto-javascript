@@ -30,13 +30,26 @@ const productsJSON = fetchData(urlApi).then((result) => {
 /* CARD */
 // Insert JSCard
 async function createCard(data, idName) {
-  let drawCard = document.getElementById(idName);
-  let dataJson = await data;
-  dataJson.forEach((e) => {
-    drawCard.innerHTML += htmlCard.html(e);
-  });
+  try {
+    if (data || idName) {
+      let drawCard = document.getElementById(idName);
+      let dataJson = await data;
+      dataJson.forEach((e) => {
+        drawCard.innerHTML += htmlCard.html(e);
+    });
+  } else {
+    throw new Error(
+      `💀 function createCard, there isn't ('${data} or ${idName}')! 💀`
+    );
+  }
+  } catch (err) {
+    message.error(err);
+  }
 }
 createCard(productsJSON, 'JSCard-elements');
+
+
+
 
 function invitedNumber(cart, idName, cartName) {
   let data = JSON.parse(cart.getItem(cartName));
@@ -86,25 +99,49 @@ function addDeletedClassHidden(id, idName, deleted = false) {
     }
   });
 }
+
 async function findPerson(id) {
-  let data = await productsJSON;
-  let person = {};
-  data.forEach((e) => {
-    if (e.id == id) {
-      person = e;
-    }
-  });
-  return person;
+  try {
+    if (id) {
+      
+      let data = await productsJSON;
+      let person = {};
+      data.forEach((e) => {
+        if (e.id == id) {
+          person = e;
+        }
+      });
+      return person;
+  
+  } else {
+    throw new Error(
+      `💀 function findPerson, there isn't ('${id}')! 💀`
+    );
+  }
+  } catch (err) {
+    message.error(err);
+  }
 }
 
 /* ONLICK -------------------------------------- STAR --*/
 async function personDeleted(id, idName) {
+  try {
+    if (id || idName) {
   let person = await findPerson(id, idName);
   addDeletedClassHidden(id, idName, true);
   deletedCardMini(id, 'JSCardMini-elements');
   deletedPerson(person, nameBDApp, localStorage);
   invitedNumber(localStorage, 'Person_number', nameBDApp);
   invitedNumber(localStorage, 'card-mini-head_number-invite', nameBDApp);
+  
+  } else {
+    throw new Error(
+      `💀 function personDeleted, there isn't ('${id} or ${idName}')! 💀`
+    );
+  }
+  } catch (err) {
+    message.error(err);
+  }
 }
 window.personDeleted = personDeleted; // because the fucntion of module is not call in external files.
 
@@ -123,20 +160,33 @@ window.personAdd = personAdd; // because the fucntion of module is not call in e
 
 /* LOCALSTORAGE -------------------------------------- STAR --*/
 async function iniShowCard(cartName, cart) {
-  let time = 500;
-  if (cart) {
-    cart = await JSON.parse(cart.getItem(cartName));
-    cart.forEach((e) => {
-      time = time + 500;
-      setTimeout(() => {
-        createCardMini(e, 'JSCardMini-elements');
-        addDeletedClassHidden(e.id, '.JSCard_content', false);
-      }, time);
-    });
+  try {
+    if (cartName || cart) {
+      
+      let time = 500;
+      if (cart) {
+        cart = await JSON.parse(cart.getItem(cartName));
+        cart.forEach((e) => {
+          time = time + 500;
+          setTimeout(() => {
+            createCardMini(e, 'JSCardMini-elements');
+            addDeletedClassHidden(e.id, '.JSCard_content', false);
+          }, time);
+        });
+      }
+    
+      invitedNumber(localStorage, 'Person_number', nameBDApp);
+      invitedNumber(localStorage, 'card-mini-head_number-invite', nameBDApp);
+  
+  } else {
+    throw new Error(
+      `💀 function iniShowCard, there isn't ('${cartName} or ${cart}')! 💀`
+    );
+  }
+  } catch (err) {
+    message.error(err);
   }
 
-  invitedNumber(localStorage, 'Person_number', nameBDApp);
-  invitedNumber(localStorage, 'card-mini-head_number-invite', nameBDApp);
 }
 iniShowCard(nameBDApp, localStorage);
 
@@ -161,31 +211,56 @@ function pushPerson(data, cartName, cart) {
 }
 
 async function deletedPerson(data, cartName, cart) {
-  let dataNew = [];
-  let dataOld = await JSON.parse(cart.getItem(cartName));
+  try {
+    if (data || cartName || cart) {
+      let dataNew = [];
+      let dataOld = await JSON.parse(cart.getItem(cartName));
+    
+      dataOld.forEach((e) => {
+        if (e.id !== data.id) {
+          dataNew.push(e);
+        }
+      });
+      cart.setItem(cartName, JSON.stringify(dataNew));
+  
+  } else {
+    throw new Error(
+      `💀 function deletedPerson, there isn't ('${data} or ${cartName} or ${cart}')! 💀`
+    );
+  }
+  } catch (err) {
+    message.error(err);
+  }
 
-  dataOld.forEach((e) => {
-    if (e.id !== data.id) {
-      dataNew.push(e);
-    }
-  });
-
-  cart.setItem(cartName, JSON.stringify(dataNew));
 }
 
 async function personDeletedAll(cartName = nameBDApp, cart = localStorage){
-  const cartOld = await JSON.parse(cart.getItem(cartName));
-  cartOld.forEach((e)=>{
-    personDeleted(e.id, '.JSCard_content')
-  });
+  try {
+    if (cartName || cart) {
+      
+      const cartOld = await JSON.parse(cart.getItem(cartName));
+      cartOld.forEach((e)=>{
+        personDeleted(e.id, '.JSCard_content')
+      });
+      
+      cart.removeItem(cartName);
+      
+      const number = 0;
+      let drawCardLogo = document.getElementById('Person_number');
+      let drawCard = document.getElementById('card-mini-head_number-invite');
+      drawCardLogo.innerHTML = number;
+      drawCard.innerHTML = number;
   
-  cart.removeItem(cartName);
-  
-  const number = 0;
-  let drawCardLogo = document.getElementById('Person_number');
-  let drawCard = document.getElementById('card-mini-head_number-invite');
-  drawCardLogo.innerHTML = number;
-  drawCard.innerHTML = number;
+  } else {
+    throw new Error(
+      `💀 function personDeletedAll, there isn't ('${cartName} or ${cart}')! 💀`
+    );
+  }
+  } catch (err) {
+    message.error(err);
+  }
+
+
 
 }
 window.personDeletedAll = personDeletedAll; // because the fucntion of module is not call in external files.
